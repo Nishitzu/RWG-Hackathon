@@ -18,12 +18,22 @@ def train_gp_and_plot_loss():
     gen = SampleDataGenerator()
     df = gen.syntetic_data_gen()
     df = gen.depended_correlation(df)
+    
+
+    # === LIMIT TO JUST 4 PARAMETERS ===
+    selected_params = ["ph", "temp", "s2_carb_conc", "s2_agitation", "yield"]
+    df = df[selected_params].copy()
+
+    print("Reduced dataset for GP:")
+    print(df.head())
+    print(df.describe())
+
 
     # 2. Encode categorical variables
-    cat_cols = ["species", "feeding_regime", "feedstock"]
-    for col in cat_cols:
-        le = LabelEncoder()
-        df[col] = le.fit_transform(df[col])
+    #cat_cols = ["species", "feeding_regime", "feedstock"]
+    #for col in cat_cols:
+    #    le = LabelEncoder()
+    #    df[col] = le.fit_transform(df[col])
 
     # 3. Train-test split
     X = df.drop(columns=["yield"])

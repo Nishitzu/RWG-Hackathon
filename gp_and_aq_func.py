@@ -20,7 +20,7 @@ class GaussianProcessRegression():
     def regressor(self, lenscale, test_X):
 
         #Chose RBF (Radial Basis Function) for kernel as it is the favorite and most used, it can be changed to Matern,
-        #which is an approximate RBF for less smooth data
+        #which is an approximate R RBF for less smooth data
         #this kernel requires a length_scale argument, which determines how far from the actual data the model
         #can try to extrapolate the pattern (larger should mean less overfitting)
         kernel = 1.0 * RBF(length_scale=lenscale)
@@ -65,7 +65,13 @@ def run_bayesian_optimization(initial_data, iterations=20, lenscale=1.5):
     best_y = y.max()
     history = [best_y]
 
-    for step in range(iterations):
+    print(f"\nStarting Bayesian Optimization ({iterations} iterations)...\n")
+
+    # ==============================================
+    # Progress bar added HERE
+    # ==============================================
+    for step in tqdm(range(iterations), desc="BO Iterations"):
+
         # Sample random candidate points in parameter space
         candidates = []
         for _ in range(500):
