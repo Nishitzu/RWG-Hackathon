@@ -170,3 +170,6 @@ class SampleDataGenerator():
 
         synt_data["yield"] = dependent_var
         return synt_data
+
+
+#ph, temp, carbon conc, carbon src, nitrogen
