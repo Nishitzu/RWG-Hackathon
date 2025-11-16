@@ -6,8 +6,8 @@ import numpy as np
 class SampleDataGenerator():
     def __init__(self):
         #Defined some relevant parameters, and their ranges
-        self.parameters = { "ph": [5, 7], "temp" : [20, 40], "carb_conc" : [10, 20], "carb_source" : ["glucose", "xylose", "oil"],
-                            "agitation" : [5, 15], "salinity" : [10, 30], "feedstock" : ["sugars", "oils"], "feeding_regime" : ["continuously_fed", "pulse_wise_feeding"]}
+        self.parameters = { "ph": [5, 7], "temp" : [20, 40], "carb_conc" : [2, 6], "carb_source" : ["glucose", "xylose", "oil"],
+                            "oxygen" : [5, 15], "salinity" : [10, 30], "feeding_regime" : ["continuously_fed", "pulse_wise_feeding", "anaerobic_aerobic"]}
 
     def syntetic_data_gen(self):
             #list container for the all the sampled lists, it will be the structure which builds the dataframe
